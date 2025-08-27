@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Social - GProA Technology e ITQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #3b82f6;
+            --accent: #00d1ff;
+            --neon: #00f7ff;
+            --dark: #020617;
+            --light: #e0f2fe;
+            --text: #94a3b8;
+            --card-bg: #1e293b;
+            --background: #0f172a;
+            --tech-gradient: linear-gradient(135deg, #3b82f6 0%, #00d1ff 100%);
+            --neon-glow: 0 0 10px rgba(0, 247, 255, 0.7);
+            --itq-blue: #0065a4;
+            --itq-gold: #f2a900;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background);
+            color: var(--text);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        /* Header futurista */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2332 50%, var(--primary) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 209, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(242, 169, 0, 0.1) 0%, transparent 50%);
+            animation: pulse 20s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            gap: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            height: 80px;
+            filter: drop-shadow(0 0 15px rgba(0, 215, 255, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-weight: 500;
+            font-size: 2.1rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #00d1ff 50%, #f2a900 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            filter: drop-shadow(0 0 20px rgba(0, 215, 255, 0.6));
+            position: relative;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                filter: drop-shadow(0 0 20px rgba(0, 215, 255, 0.6));
+            }
+            100% {
+                filter: drop-shadow(0 0 30px rgba(242, 169, 0, 0.8));
+            }
+        }
+
+        .logo-text p {
+            margin: 8px 0 0;
+            font-size: 1.2rem;
+            color: var(--light);
+            letter-spacing: 4px;
+            font-weight: 400;
+            text-transform: uppercase;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text p:hover {
+            color: var(--accent);
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: var(--light);
+            margin-top: 1rem;
+        }
+
+        .partnership-badge {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(0, 209, 255, 0.15), rgba(242, 169, 0, 0.15));
+            border: 2px solid rgba(59, 130, 246, 0.4);
+            border-radius: 25px;
+            padding: 15px 30px;
+            margin: 25px auto;
+            display: inline-block;
+            backdrop-filter: blur(15px);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.2);
+        }
+
+        .partnership-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.3);
+            border-color: rgba(0, 209, 255, 0.6);
+        }
+
+        .partnership-badge span {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Navegación */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--tech-gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        /* Secciones */
+        section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.2);
+            margin: 2rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .intro h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            text-shadow: 0 0 20px rgba(0, 215, 255, 0.3);
+        }
+
+        .intro p {
+            color: var(--light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Tarjetas dinámicas */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px rgba(0, 215, 255, 0.3);
+        }
+
+        .card p {
+            color: var(--light);
+            line-height: 1.7;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(0, 215, 255, 0.5);
+        }
+
+        /* Secciones especiales */
+        .benefits {
+            background: linear-gradient(135deg, var(--primary), var(--card-bg));
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 209, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .benefits h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefits .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .process {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.2);
+            margin: 2rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .process h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 215, 255, 0.3);
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--tech-gradient);
+            z-index: 1;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 10px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--tech-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            border: 5px solid var(--card-bg);
+            box-shadow: 0 0 0 3px var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .step-number:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 215, 255, 0.5);
+        }
+
+        .projects {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.6));
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+        }
+
+        .project-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--light);
+            line-height: 1.7;
+        }
+
+        .requirements {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.2);
+            margin: 2rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .requirements h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 215, 255, 0.3);
+        }
+
+        .requirements-list {
+            list-style-type: none;
+        }
+
+        .requirements-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--light);
+            line-height: 1.7;
+        }
+
+        .requirements-list li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            text-shadow: 0 0 10px rgba(0, 215, 255, 0.5);
+        }
+
+        .contact {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.2);
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 215, 255, 0.3);
+        }
+
+        .contact p {
+            color: var(--light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Botones futuristas */
+        .btn {
+            display: inline-block;
+            background: var(--tech-gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 15px;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: var(--primary);
+            color: var(--light);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            height: 60px;
+            filter: drop-shadow(0 0 10px rgba(0, 215, 255, 0.3));
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer strong {
+            color: var(--accent);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .step {
+                min-width: 100%;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                gap: 25px;
+                padding: 15px;
+            }
+            
+            .logo {
+                height: 60px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav a {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .intro, .benefits, .process, .projects, .requirements, .contact {
+                padding: 2rem;
+            }
+        }
+
+        /* Efectos de scroll */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo2.png" alt="GProA Technology Logo" class="logo">
+                <div class="logo-text">
+                    <h1>Programa de Servicio Social</h1>
+                    <p>GProA Technology + ITQ</p>
+                    <p>Formando profesionales en tecnologías emergentes</p>
+                </div>
+                <img src="Logo ITQ.png" alt="ITQ Logo" class="logo">
+            </div>
+            <div class="partnership-badge">
+                <span><i class="fas fa-handshake"></i> Colaboración Estratégica</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#inicio">Inicio</a>
+            <a href="#ventajas">Ventajas</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#requisitos">Requisitos</a>
+            <a href="#proceso">Proceso</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="inicio" class="intro scroll-reveal">
+            <h2><i class="fas fa-rocket"></i> Transforma tu Servicio Social en una Experiencia Profesional Real</h2>
+            <p>GProA Technology ofrece a estudiantes del Instituto Tecnológico de Querétaro la oportunidad de realizar su servicio social en proyectos de tecnología de vanguardia, trabajando en soluciones reales con impacto tangible en la industria.</p>
+            <p>Nuestro programa está diseñado para integrar a estudiantes en proyectos de automatización industrial, inteligencia artificial, desarrollo de software y gestión de proyectos con tecnología de punta.</p>
+        </section>
+        
+        <section id="ventajas">
+            <h2><i class="fas fa-star"></i> Ventajas del Servicio Social en GProA</h2>
+            <div class="card-container">
+                <div class="card scroll-reveal">
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Experiencia en Tecnologías Emergentes</h3>
+                    <p>Trabajarás con IA, automatización industrial, cloud computing y otras tecnologías de vanguardia altamente valoradas en el mercado laboral.</p>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Mentoría Especializada</h3>
+                    <p>Recibirás acompañamiento de ingenieros seniors con amplia experiencia en la industria, dispuestos a compartir sus conocimientos.</p>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Proyectos Reales</h3>
+                    <p>Participarás en proyectos reales con clientes industriales, no en ejercicios académicos, adquiriendo experiencia práctica valiosa.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="beneficios" class="benefits">
+            <h2><i class="fas fa-gift"></i> Beneficios para Estudiantes del ITQ</h2>
+            <div class="card-container">
+                <div class="card scroll-reveal">
+                    <h3><i class="fas fa-clock"></i> Flexibilidad de Horarios</h3>
+                    <p>Comprendemos que eres estudiante, por lo que ofrecemos horarios flexibles que se adaptan a tu carga académica.</p>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <h3><i class="fas fa-user-plus"></i> Posibilidad de Incorporación</h3>
+                    <p>Los estudiantes destacados tienen oportunidad de incorporarse a nuestra plantilla laboral al concluir su servicio social.</p>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <h3><i class="fas fa-certificate"></i> Certificación de Habilidades</h3>
+                    <p>Al concluir, recibirás una certificación que valida las habilidades y tecnologías dominadas durante tu servicio social.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="requisitos" class="requirements">
+            <h2><i class="fas fa-clipboard-check"></i> Requisitos para Participar</h2>
+            <ul class="requirements-list">
+                <li>Ser estudiante regular del Instituto Tecnológico de Querétaro</li>
+                <li>Cursar al menos el 5° semestre de tu carrera</li>
+                <li>Tener disponibilidad de al menos 20 horas semanales</li>
+                <li>Conocimientos básicos de programación (según el proyecto)</li>
+                <li>Interés genuino en tecnologías emergentes</li>
+                <li>Compromiso y responsabilidad</li>
+                <li>Actitud proactiva y de aprendizaje continuo</li>
+            </ul>
+        </section>
+        
+        <section id="proceso" class="process">
+            <h2><i class="fas fa-route"></i> Proceso de Selección</h2>
+            <div class="process-steps">
+                <div class="step scroll-reveal">
+                    <div class="step-number">1</div>
+                    <h3>Postulación</h3>
+                    <p>Envía tu CV y carta de motivos al correo de contacto</p>
+                </div>
+                
+                <div class="step scroll-reveal">
+                    <div class="step-number">2</div>
+                    <h3>Revisión</h3>
+                    <p>Evaluamos tu perfil y te contactamos para una entrevista inicial</p>
+                </div>
+                
+                <div class="step scroll-reveal">
+                    <div class="step-number">3</div>
+                    <h3>Entrevista</h3>
+                    <p>Conocernos mutuamente y evaluar compatibilidad con nuestros proyectos</p>
+                </div>
+                
+                <div class="step scroll-reveal">
+                    <div class="step-number">4</div>
+                    <h3>Integración</h3>
+                    <p>Inicio formal del servicio social con inducción y asignación de proyecto</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="proyectos" class="projects">
+            <h2><i class="fas fa-project-diagram"></i> Áreas de Proyecto Disponibles</h2>
+            
+            <div class="project-card scroll-reveal">
+                <h3><i class="fas fa-brain"></i> Desarrollo de Software con IA</h3>
+                <p>Colabora en el desarrollo de nuestras plataformas GECRAI y GIACELIA, implementando algoritmos de inteligencia artificial para resolver problemas de la industria.</p>
+                <p><strong>Tecnologías:</strong> Python, TensorFlow, APIs, Google Cloud</p>
+            </div>
+            
+            <div class="project-card scroll-reveal">
+                <h3><i class="fas fa-cogs"></i> Automatización Industrial</h3>
+                <p>Participa en proyectos de automatización de procesos industriales, trabajando con PLCs, sensores y sistemas de control.</p>
+                <p><strong>Tecnologías:</strong> PLC, SCADA, IoT, Sistemas embebidos</p>
+            </div>
+            
+            <div class="project-card scroll-reveal">
+                <h3><i class="fas fa-code"></i> Desarrollo Frontend/Backend</h3>
+                <p>Ayuda a crear interfaces de usuario y APIs para nuestras plataformas tecnológicas, con enfoque en experiencia de usuario.</p>
+                <p><strong>Tecnologías:</strong> JavaScript, React, Node.js, Bases de datos</p>
+            </div>
+            
+            <div class="project-card scroll-reveal">
+                <h3><i class="fas fa-chart-line"></i> Análisis de Datos</h3>
+                <p>Trabaja en el procesamiento y análisis de datos industriales para generar insights y dashboards para la toma de decisiones.</p>
+                <p><strong>Tecnologías:</strong> Python, Pandas, Visualización de datos, SQL</p>
+            </div>
+        </section>
+        
+        <section id="contacto" class="contact">
+            <h2><i class="fas fa-handshake"></i> ¿Te interesa participar?</h2>
+            <p>Envía tu curriculum vitae y una carta de motivos explicando por qué te interesa realizar tu servicio social en GProA Technology</p>
+            <p><strong>Contacto:</strong> admin@gproatechnology.com</p>
+            <p><strong>Teléfono:</strong> +52 468 120 8570</p>
+            <a href="mailto:admin@gproatechnology.com" class="btn">
+                <i class="fas fa-envelope"></i> Enviar postulación
+            </a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="logo2.png" alt="GProA Technology Logo" class="footer-logo">
+                <div>
+                    <p><strong>GProA Technology S. de R.L. de C.V.</strong> - Innovación que impulsa resultados</p>
+                    <p>Desarrollo de Tecnologías Emergentes & Gestión de Proyectos de Automatización con IA</p>
+                    <p>www.gproatechnology.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animaciones de scroll
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.scroll-reveal');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Efecto de partículas en el fondo (opcional)
+        function createParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+                opacity: 0.1;
+            `;
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 2px;
+                    height: 2px;
+                    background: var(--accent);
+                    border-radius: 50%;
+                    animation: float ${Math.random() * 10 + 10}s infinite linear;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                `;
+                particlesContainer.appendChild(particle);
+            }
+            
+            document.body.appendChild(particlesContainer);
+        }
+
+        // Crear partículas al cargar
+        createParticles();
+    </script>
+
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</body>
+</html>
